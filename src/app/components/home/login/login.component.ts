@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('');
+    this.authService.autenticar(this.userName, this.password).subscribe(() => {
+      console.log('autenticado')
+    }, (err) => {
+      alert('usuario invalido')
+      console.log(err)
+    })
   }
 }
