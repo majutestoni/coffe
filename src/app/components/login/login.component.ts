@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   textUserNameRequired = 'O login é obrigatória!';
   userName = '';
   password = '';
+  public listUsers: Users[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,24 +38,30 @@ export class LoginComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required],
     });
+    this.listUsers = this.authService.items;
     this.authService.getUser().subscribe((retorno) => {
-      this.users = retorno.map((item) => {
+      this.listUsers = retorno.map((item) => {
+        console.table(item);
         return new Users(item.id, item.userName, item.password);
       });
     });
+
+    //  this.authService.getUser().subscribe((items: Users[]) => {
+    //    console.table(items);
+    //    this.listUsers = items;
+    //  });
   }
 
   login() {
-    this.authService.autenticar(this.userName, this.password).subscribe(
-      () => {
-        console.log('autenticado');
-      },
-      (err) => {
-        alert('usuario invalido');
-        console.log(err);
+    for (let i = 0; i < this.listUsers.length; i++) {
+      if (
+        this.userName === this.listUsers[i].userName &&
+        this.password === this.listUsers[i].password
+      ) {
+        console.log('logado');
+      } else {
+        console.log('errado');
       }
-    );
+    }
   }
-
-  public users: Users[];
 }

@@ -7,17 +7,25 @@ import { Users } from '../users';
   providedIn: 'root',
 })
 export class AutenticacaoService {
-  constructor(private httpClient: HttpClient) {}
-  private url = 'http://localhost:3000/users'
+  private listUsers: any[];
 
-  autenticar(userName: string, password: string): Observable<any>{
-return this.httpClient.post('http://localhost:3000/users', {
-  userName: userName,
-  password: password
-})
+  constructor(private httpClient: HttpClient) {
+    this.listUsers = [];
+  }
+  private url = 'http://localhost:3000/users';
+
+  autenticar(userName: string, password: string): Observable<any> {
+    return this.httpClient.post('http://localhost:3000/users', {
+      userName: userName,
+      password: password,
+    });
   }
 
-  getUser(): Observable<Users[]>{
-    return this.httpClient.get<Users[]>(this.url)
+  get items() {
+    return this.listUsers;
+  }
+
+  getUser(): Observable<Users[]> {
+    return this.httpClient.get<Users[]>(this.url);
   }
 }
