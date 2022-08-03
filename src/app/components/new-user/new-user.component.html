@@ -6,7 +6,7 @@
     name="userName"
     formControlName="userName"
   />
-  <small *ngIf="newForm?.get('userName')?.errors?.required">erro</small>
+  <small *ngIf="newForm?.get('userName')?.errors?.required && newForm?.get('userName')?.touched">É necessario preencher o usuario!</small>
 
   <input
     type="password"
@@ -14,7 +14,7 @@
     name="password"
     formControlName="password"
   />
-  <small *ngIf="newForm?.get('password')?.errors?.required">erro</small>
+  <small *ngIf="newForm?.get('password')?.errors?.required && newForm?.get('password')?.touched">É necessario preencher a senha!</small>
   <button [disabled]="newForm.invalid" type="submitsd">Adicionar</button>
 </form>
 <a href="http://localhost:4200">Já tem um usuario?</a>

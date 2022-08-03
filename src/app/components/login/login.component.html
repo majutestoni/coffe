@@ -3,23 +3,26 @@
     formControlName="userName"
     type="text"
     placeholder="login"
-    autofocus
     [(ngModel)]="userName"
     name="userName"
   />
-  <small *ngIf="loginForm?.get('userName')?.errors?.required">
-    {{ textUserNameRequired }}
+  <small
+    *ngIf="
+      loginForm?.get('userName')?.errors?.required &&
+      loginForm?.get('userName')?.touched
+    "
+  >
+    É necessario preencher o usuario!
   </small>
   <input
     formControlName="password"
     type="password"
     placeholder="senha"
-    autofocus
     [(ngModel)]="password"
     name="password"
   />
-  <small *ngIf="loginForm?.get('password')?.errors?.required">
-    {{ textPasswordRequired }}</small
+  <small *ngIf="loginForm?.get('password')?.errors?.required && loginForm?.get('password')?.touched">
+    É necessario preencher a senha!</small
   >
   <button [disabled]="loginForm.invalid" type="submit">Enviar</button>
 </form>

@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/autenticacao/autenticacao.service';
 import { Users } from 'src/app/users';
 
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AutenticacaoService
+    private authService: AutenticacaoService,
+    private router: Router
   ) {
     this.loginForm = new FormGroup({
       userName: new FormControl(''),
@@ -56,9 +58,9 @@ export class LoginComponent implements OnInit {
         this.userName === this.listUsers[i].userName &&
         this.password === this.listUsers[i].password
       ) {
-        console.log('logado');
-        this.userName = ''
-        this.password = ''
+        this.router.navigate(['home']);
+        this.userName = '';
+        this.password = '';
       } else {
         console.log('errado');
       }
