@@ -1,18 +1,26 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
-  <input formControlName="userName" type="text" placeholder="login" autofocus 
-  [(ngModel)]="userName" name="userName"
+  <input
+    formControlName="userName"
+    type="text"
+    placeholder="login"
+    autofocus
+    [(ngModel)]="userName"
+    name="userName"
   />
-  <small *ngIf="loginForm?.get('userName')?.errors?.required"> {{textUserNameRequired}} </small>
+  <small *ngIf="loginForm?.get('userName')?.errors?.required">
+    {{ textUserNameRequired }}
+  </small>
   <input
     formControlName="password"
     type="password"
-    name=""
-    id=""
     placeholder="senha"
     autofocus
-    [(ngModel)]="password" name="password"
+    [(ngModel)]="password"
+    name="password"
   />
-  <small *ngIf="loginForm?.get('password')?.errors?.required"> {{textPasswordRequired}}</small>
+  <small *ngIf="loginForm?.get('password')?.errors?.required">
+    {{ textPasswordRequired }}</small
+  >
   <button [disabled]="loginForm.invalid" type="submit">Enviar</button>
 </form>
 
