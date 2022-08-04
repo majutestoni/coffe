@@ -22,9 +22,8 @@
           />
           <small
             *ngIf="
-              newForm?.get('email')?.errors?.required &&
-              newForm?.get('email')?.touched
-            "
+              newForm.get('email')?.errors?.required &&
+              newForm.get('email')?.touched"
             >É necessario preencher o e-mail!</small
           >
         </div>
@@ -62,7 +61,9 @@
             >É necessario preencher a senha!</small
           >
         </div>
-        <button class="btn-login" [disabled]="newForm.invalid" type="submitsd">Adicionar</button>
+        <button class="btn-login" [disabled]="newForm.invalid" type="submitsd">
+          Adicionar
+        </button>
       </form>
       <p class="message">
         Já possui uma conta? Acesse
