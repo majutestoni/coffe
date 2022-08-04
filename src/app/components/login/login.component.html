@@ -1,57 +1,60 @@
 <div class="main">
   <div class="left-login">
-    <h1>Coffe shop</h1>
-    <h3>E aproveitei o melhor do café</h3>
-    
+    <img
+      class="imag"
+      src="assets/img/cafe.jpg"
+      alt="imagem de xicaras de cafe"
+    />
   </div>
 
-  <div class="right-login"></div>
-  <div class="card-login">
-    <h2>Faça o login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <div class="textfield">
-        <label>Usuario</label>
-        <input
-          formControlName="userName"
-          type="text"
-          placeholder="Digite aqui..."
-          [(ngModel)]="userName"
-          name="userName"
-        />
-        <small
-          *ngIf="
-            loginForm?.get('userName')?.errors?.required &&
-            loginForm?.get('userName')?.touched
-          "
-        >
-          É necessario preencher o usuario!
-        </small>
-      </div>
-      <div class="textfield">
-        <label>Senha</label>
-        <input
-          formControlName="password"
-          type="password"
-          placeholder="Digite aqui..."
-          [(ngModel)]="password"
-          name="password"
-        />
-        <small
-          *ngIf="
-            loginForm?.get('password')?.errors?.required &&
-            loginForm?.get('password')?.touched
-          "
-        >
-          É necessario preencher a senha!</small
-        >
-      </div>
-      <button class="btn-login" [disabled]="loginForm.invalid" type="submit">
-        Enviar
-      </button>
-    </form>
-    <p class="message">
-      Não possui uma conta? Crie
-      <strong> <a href="http://localhost:4200/newUser">aqui</a></strong>
-    </p>
+  <div class="right-login">
+    <div class="card-login">
+      <h2>Faça o login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="textfield">
+          <label>Usuario</label>
+          <input
+            formControlName="userName"
+            type="text"
+            placeholder="Digite aqui..."
+            [(ngModel)]="userName"
+            name="userName"
+          />
+          <small
+            *ngIf="
+              loginForm?.get('userName')?.errors?.required &&
+              loginForm?.get('userName')?.touched
+            "
+          >
+            É necessario preencher o usuario!
+          </small>
+        </div>
+        <div class="textfield">
+          <label>Senha</label>
+          <input
+            formControlName="password"
+            type="password"
+            placeholder="Digite aqui..."
+            [(ngModel)]="password"
+            name="password"
+          />
+          <small
+            *ngIf="
+              loginForm?.get('password')?.errors?.required &&
+              loginForm?.get('password')?.touched
+            "
+          >
+            É necessario preencher a senha!</small
+          >
+        </div>
+        <button class="btn-login" [disabled]="loginForm.invalid" type="submit">
+          Enviar
+        </button>
+      </form>
+      <p class="message">
+        Não possui uma conta? Crie
+        <strong> <a href="http://localhost:4200/newUser">aqui</a></strong>
+      </p>
+    </div>
   </div>
 </div>

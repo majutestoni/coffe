@@ -1,20 +1,56 @@
-<h3>Novo usuario</h3>
-<form [formGroup]="newForm" (ngSubmit)="newUser()">
-  <input
-    type="text"
-    [(ngModel)]="userName"
-    name="userName"
-    formControlName="userName"
-  />
-  <small *ngIf="newForm?.get('userName')?.errors?.required && newForm?.get('userName')?.touched">É necessario preencher o usuario!</small>
+<div class="main">
+  <div class="left-login">
+    <img
+      class="imag"
+      src="assets/img/cafe.jpg"
+      alt="imagem de xicaras de cafe"
+    />
+  </div>
 
-  <input
-    type="password"
-    [(ngModel)]="password"
-    name="password"
-    formControlName="password"
-  />
-  <small *ngIf="newForm?.get('password')?.errors?.required && newForm?.get('password')?.touched">É necessario preencher a senha!</small>
-  <button [disabled]="newForm.invalid" type="submitsd">Adicionar</button>
-</form>
-<a href="http://localhost:4200">Já tem um usuario?</a>
+  <div class="right-login">
+    <div class="card-login">
+      <h2>Novo usuario</h2>
+      <form [formGroup]="newForm" (ngSubmit)="newUser()">
+        <div class="textfield">
+          <label>Primeiro nome</label>
+          <input
+            placeholder="Digite aqui..."
+            type="text"
+            [(ngModel)]="userName"
+            name="userName"
+            formControlName="userName"
+          />
+          <small
+            *ngIf="
+              newForm?.get('userName')?.errors?.required &&
+              newForm?.get('userName')?.touched
+            "
+            >É necessario preencher o usuario!</small
+          >
+        </div>
+        <div class="textfield">
+          <label>Escolha a senha</label>
+          <input
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            formControlName="password"
+            placeholder="Digite aqui"
+          />
+          <small
+            *ngIf="
+              newForm?.get('password')?.errors?.required &&
+              newForm?.get('password')?.touched
+            "
+            >É necessario preencher a senha!</small
+          >
+        </div>
+        <button class="btn-login" [disabled]="newForm.invalid" type="submitsd">Adicionar</button>
+      </form>
+      <p class="message">
+        Já possui uma conta? Acesse
+        <strong> <a href="http://localhost:4200">aqui</a></strong>
+      </p>
+    </div>
+  </div>
+</div>
