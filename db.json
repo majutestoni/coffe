@@ -2,18 +2,21 @@
   "users": [
     {
       "id": "1",
+      "email": "gabriela@email.com",
       "userName": "Gabriela",
       "password": "123"
     },
     {
       "id": "2",
+      "email": "tereza@email.com",
       "userName": "Tereza",
       "password": "123"
     },
     {
-      "userName": "teste",
-      "password": "teste",
-      "id": "j3iquhc"
+      "email": "teste@teste.com",
+      "userName": "teste ",
+      "password": "123",
+      "id": "YigT2il"
     }
   ]
 }

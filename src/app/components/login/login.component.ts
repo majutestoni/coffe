@@ -59,10 +59,10 @@ export class LoginComponent implements OnInit {
         this.password === this.listUsers[i].password
       ) {
         this.router.navigate(['home']);
-        this.userName = '';
-        this.password = '';
       } else {
         console.log('errado');
+        this.userName = '';
+        this.password = '';
       }
     }
   }

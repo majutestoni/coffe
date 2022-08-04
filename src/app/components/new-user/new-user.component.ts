@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/autenticacao/autenticacao.service';
 import { Users } from 'src/app/users';
 
@@ -19,13 +20,16 @@ export class NewUserComponent implements OnInit {
 
   password = '';
   userName = '';
+  email = '';
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AutenticacaoService
+    private authService: AutenticacaoService,
+    private router: Router
   ) {
     this.newForm = new FormGroup({
       userName: new FormControl(''),
       password: new FormControl(''),
+      email: new FormControl(''),
     });
   }
 
@@ -33,6 +37,7 @@ export class NewUserComponent implements OnInit {
     this.newForm = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
+      email: ['', Validators.required],
     });
 
     this.authService.getUser().subscribe((items: Users[]) => {
@@ -42,14 +47,15 @@ export class NewUserComponent implements OnInit {
   }
 
   newUser() {
-    this.authService.autenticar(this.userName, this.password).subscribe(
+    this.authService.autenticar(this.email,this.userName, this.password).subscribe(
       () => {
-        console.log('autenticado');
-        this.userName = ''
-        this.password = ''
+        this.router.navigate(['home']);
       },
       (err) => {
         console.log(err);
+        this.userName = '';
+        this.password = '';
+        this.email = '';
       }
     );
   }

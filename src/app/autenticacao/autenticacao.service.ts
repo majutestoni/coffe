@@ -14,8 +14,9 @@ export class AutenticacaoService {
   }
   private url = 'http://localhost:3000/users';
 
-  autenticar(userName: string, password: string): Observable<any> {
+  autenticar(email: string,userName: string, password: string): Observable<any> {
     return this.httpClient.post('http://localhost:3000/users', {
+      email: email,
       userName: userName,
       password: password,
     });

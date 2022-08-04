@@ -12,7 +12,24 @@
       <h2>Novo usuario</h2>
       <form [formGroup]="newForm" (ngSubmit)="newUser()">
         <div class="textfield">
-          <label>Primeiro nome</label>
+          <label>Digite o e-mail</label>
+          <input
+            placeholder="Digite aqui..."
+            type="text"
+            [(ngModel)]="email"
+            name="email"
+            formControlName="email"
+          />
+          <small
+            *ngIf="
+              newForm?.get('email')?.errors?.required &&
+              newForm?.get('email')?.touched
+            "
+            >É necessario preencher o e-mail!</small
+          >
+        </div>
+        <div class="textfield">
+          <label>Digite o usuario</label>
           <input
             placeholder="Digite aqui..."
             type="text"
