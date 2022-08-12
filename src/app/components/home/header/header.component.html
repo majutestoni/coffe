@@ -1,0 +1,15 @@
+<header>
+  <nav>
+    <a href=""> CoffeShop </a>
+    <div *ngIf="user$ | async as user">
+      <div>
+        <i>
+          <a href="">{{ user.userName }}</a>
+          <a (click)="logout()" href="">Logout</a>
+        </i>
+      </div>
+    </div>
+  </nav>
+
+
+</header>
